@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const useWishlistStore = defineStore('wishlist', { state: () => ({ items: [] }), getters: { count: s => s.items.length }, actions: { toggle(product) { this.items = this.items.some(p => p.id === product.id) ? this.items.filter(p => p.id !== product.id) : [...this.items, product] }, remove(id) { this.items = this.items.filter(p => p.id !== id) } } })

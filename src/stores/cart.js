@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const useCartStore = defineStore('cart', { state: () => ({ items: [] }), getters: { count: s => s.items.reduce((n, p) => n + p.quantity, 0), total: s => s.items.reduce((n, p) => n + p.price * p.quantity, 0) }, actions: { add(product) { const row = this.items.find(p => p.id === product.id); row ? row.quantity++ : this.items.push({ ...product, quantity: 1 }) }, remove(id) { this.items = this.items.filter(p => p.id !== id) }, clear() { this.items = [] } } })

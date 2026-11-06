@@ -1,5 +1,15 @@
 import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import ToastPlugin from 'vue-toast-notification';
+import { Icon } from "@iconify/vue";
 import App from './App.vue'
 import router from './router'
 
-createApp(App).use(router).mount('#app')
+import 'vue-toast-notification/dist/theme-bootstrap.css';
+import './assets/styles/main.css'
+
+createApp(App)
+   .use(createPinia())
+   .use(ToastPlugin)
+   .component("Icon", Icon)
+   .use(router).mount('#app')

@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const usePreferencesStore = defineStore('preferences', { state: () => ({ currency: 'USD', compactView: false, newsletter: true }), actions: { setCurrency(value) { this.currency = value }, toggleCompact() { this.compactView = !this.compactView } } })

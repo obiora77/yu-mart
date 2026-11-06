@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const usePaymentsStore = defineStore('payments', { state: () => ({ provider: 'paystack', status: 'idle', reference: null }), actions: { setProvider(provider) { this.provider = provider }, setResult(status, reference = null) { this.status = status; this.reference = reference } } })

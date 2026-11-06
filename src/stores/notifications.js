@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const useNotificationsStore = defineStore('notifications', { state: () => ({ items: [] }), actions: { push(message, type = 'success') { this.items.unshift({ id: Date.now(), message, type, read: false }) }, markAllRead() { this.items.forEach(n => n.read = true) } } })

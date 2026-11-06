@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const useCategoriesStore = defineStore('categories', { state: () => ({ items: [], active: 'all' }), actions: { setItems(items) { this.items = items }, select(id) { this.active = id } } })

@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const useProductsStore = defineStore('products', { state: () => ({ items: [], loading: false, error: null }), getters: { byId: s => id => s.items.find(p => p.id === id) }, actions: { setItems(items) { this.items = items }, find(query) { return this.items.filter(p => p.name.toLowerCase().includes(query.toLowerCase())) } } })

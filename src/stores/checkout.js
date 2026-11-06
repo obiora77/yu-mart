@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const useCheckoutStore = defineStore('checkout', { state: () => ({ address: {}, deliveryMethod: 'standard', notes: '' }), actions: { setAddress(address) { this.address = address }, reset() { this.$reset() } } })

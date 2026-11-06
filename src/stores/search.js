@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const useSearchStore = defineStore('search', { state: () => ({ query: '', history: [] }), actions: { setQuery(value) { this.query = value }, remember(value) { if (value.trim()) this.history = [value, ...this.history.filter(v => v !== value)].slice(0, 6) }, clear() { this.query = '' } } })

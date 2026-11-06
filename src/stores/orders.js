@@ -1,0 +1,2 @@
+import { defineStore } from 'pinia'
+export const useOrdersStore = defineStore('orders', { state: () => ({ items: JSON.parse(localStorage.getItem('yumart-orders') || '[]') }), actions: { place(order) { const saved = { ...order, id: `YM${Date.now()}`, createdAt: new Date().toISOString(), status: 'Processing' }; this.items.unshift(saved); localStorage.setItem('yumart-orders', JSON.stringify(this.items)); return saved } } })

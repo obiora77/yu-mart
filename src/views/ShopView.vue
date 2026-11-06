@@ -1,0 +1,10 @@
+<template><main class="page-width shop-page"><div class="shop-heading"><div><span class="eyebrow">THE WHOLE MARKET</span><h1>Shop all products</h1><p>Find your everyday favourites and a few new ones.</p></div><label>Sort by <select v-model="sort"><option value="featured">Featured</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="name">Name</option></select></label></div><div class="shop-filters"><button :class="{active:store.selectedCategory==='all'}" @click="store.setSelectedCategory('all')">All items</button><button v-for="category in store.allProducts" :key="category.id" :class="{active:store.selectedCategory===category.id}" @click="store.setSelectedCategory(category.id)">{{ category.name }}</button></div><ProductLists title="Browse the market" :limit="0" :sort="sort" :key="`${store.selectedCategory}-${sort}`" /></main></template>
+<script setup>
+import { ref } from 'vue'
+import { useAllProductStore } from '@/stores/useAllProductStore'
+import ProductLists from '@/components/ProductLists.vue'
+const store=useAllProductStore()
+const sort=ref('featured')
+
+</script>
+<style scoped>.shop-page{padding-top:45px}.shop-heading{display:flex;justify-content:space-between;align-items:end}.eyebrow{font-size:9px;letter-spacing:1.6px;color:#a87937;font-weight:800}.shop-heading h1{font-size:32px;color:#263d2d}.shop-heading p{font-size:12px;color:#899289}.shop-heading label{font-size:11px;color:#7a867b}.shop-heading select{padding:9px;border:1px solid #e5eae2;border-radius:5px;margin-left:7px;background:white}.shop-filters{display:flex;gap:8px;flex-wrap:wrap;margin:25px 0 0}.shop-filters button{border:1px solid #e5eae2;background:white;padding:8px 12px;border-radius:20px;color:#607061;font-size:10px;cursor:pointer}.shop-filters button.active{background:#24462f;color:white;border-color:#24462f}@media(max-width:600px){.shop-heading{align-items:flex-start;flex-direction:column;gap:15px}.shop-heading h1{font-size:27px}}</style>
